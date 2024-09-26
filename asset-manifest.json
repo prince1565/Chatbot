@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.7ed67124.css",
-    "main.js": "/static/js/main.63425117.js",
-    "static/js/453.b2eec619.chunk.js": "/static/js/453.b2eec619.chunk.js",
-    "static/media/botlogo.png": "/static/media/botlogo.faee38c59fa332f59f19.png",
-    "static/media/Kubota-Logo.png": "/static/media/Kubota-Logo.78ee2385011cb8f117e9.png",
-    "static/media/eslogo.png": "/static/media/eslogo.d6f78f2d335fd6730a70.png",
-    "static/media/escorts.png": "/static/media/escorts.4dae1400130c39343d58.png",
-    "index.html": "/index.html",
-    "main.7ed67124.css.map": "/static/css/main.7ed67124.css.map",
-    "main.63425117.js.map": "/static/js/main.63425117.js.map",
-    "453.b2eec619.chunk.js.map": "/static/js/453.b2eec619.chunk.js.map"
+    "main.css": "/chatbot/static/css/main.7ed67124.css",
+    "main.js": "/chatbot/static/js/main.1084f3f5.js",
+    "static/js/453.b2eec619.chunk.js": "/chatbot/static/js/453.b2eec619.chunk.js",
+    "static/media/botlogo.png": "/chatbot/static/media/botlogo.faee38c59fa332f59f19.png",
+    "static/media/Kubota-Logo.png": "/chatbot/static/media/Kubota-Logo.78ee2385011cb8f117e9.png",
+    "static/media/eslogo.png": "/chatbot/static/media/eslogo.d6f78f2d335fd6730a70.png",
+    "static/media/escorts.png": "/chatbot/static/media/escorts.4dae1400130c39343d58.png",
+    "index.html": "/chatbot/index.html",
+    "main.7ed67124.css.map": "/chatbot/static/css/main.7ed67124.css.map",
+    "main.1084f3f5.js.map": "/chatbot/static/js/main.1084f3f5.js.map",
+    "453.b2eec619.chunk.js.map": "/chatbot/static/js/453.b2eec619.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7ed67124.css",
-    "static/js/main.63425117.js"
+    "static/js/main.1084f3f5.js"
   ]
 }
