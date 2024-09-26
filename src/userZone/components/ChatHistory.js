@@ -4,7 +4,7 @@ import '../App.css';
 
 const ChatHistory = ({ messages }) => {
   const [chathistory, setchathistory] = useState([]);
-
+  
   useEffect(() => {
     // Fetch history from local storage on component mount
     

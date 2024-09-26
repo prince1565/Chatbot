@@ -7,8 +7,7 @@ import kubota from '../images/brand/Kubota-Logo.png';
 import { CSidebarBrand, CSidebarHeader } from '@coreui/react';
 
 const SidebarContent = ({ onClose }) => {
-  const location = useLocation();
-
+ const location = useLocation();
   return (
     <VStack spacing="4" align="stretch">
       <Link

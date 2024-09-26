@@ -9,6 +9,7 @@ import logo from "../Images/eslogo.png";
 import Header from "../components/Header";
 
 const Chat = () => {
+  
   const [messages, setMessages] = useState([]);
   const [clearInput, setClearInput] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -27,8 +28,8 @@ const Chat = () => {
       sender: "bot",
       text: "Bot message comes here"
     };
-
-    setMessages((prevMessages) => [...prevMessages, userMessage, botMessage]);
+    
+    setMessages((prevMessages) => [...prevMessages, userMessage, guidedQuestions]);
   };
 
   const handleClear = () => {
