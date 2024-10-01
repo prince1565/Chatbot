@@ -59,7 +59,8 @@ const Chat = () => {
         zIndex="10"
       >
         <div className="d-grid col-9 mx-auto">
-          <img src={logo} alt="Logo" />
+          {/* <img src={logo} alt="Logo" /> */}
+          <h1 className="text-center text-info">Apna Bot</h1>
         </div>
         <br />
         <div className="d-grid gap-2 col-8 col-lg-6 mx-auto">
