@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Chatbot/static/css/main.7ed67124.css",
-    "main.js": "/Chatbot/static/js/main.8a42c734.js",
+    "main.js": "/Chatbot/static/js/main.d04e864b.js",
     "static/js/453.b2eec619.chunk.js": "/Chatbot/static/js/453.b2eec619.chunk.js",
     "static/media/botlogo.png": "/Chatbot/static/media/botlogo.faee38c59fa332f59f19.png",
     "static/media/Kubota-Logo.png": "/Chatbot/static/media/Kubota-Logo.78ee2385011cb8f117e9.png",
@@ -9,11 +9,11 @@
     "static/media/escorts.png": "/Chatbot/static/media/escorts.4dae1400130c39343d58.png",
     "index.html": "/Chatbot/index.html",
     "main.7ed67124.css.map": "/Chatbot/static/css/main.7ed67124.css.map",
-    "main.8a42c734.js.map": "/Chatbot/static/js/main.8a42c734.js.map",
+    "main.d04e864b.js.map": "/Chatbot/static/js/main.d04e864b.js.map",
     "453.b2eec619.chunk.js.map": "/Chatbot/static/js/453.b2eec619.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7ed67124.css",
-    "static/js/main.8a42c734.js"
+    "static/js/main.d04e864b.js"
   ]
 }
