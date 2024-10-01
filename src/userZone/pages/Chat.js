@@ -1,6 +1,135 @@
 
+import React, { useState } from "react";
+import { Box, VStack, IconButton,Text } from "@chakra-ui/react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import Chatbot from "../components/Chatbot";
+import ChatHistory from "../components/ChatHistory";
+import InputComponent from "../components/InputComponent";
+import logo from "../Images/eslogo.png";
+import Header from "../components/Header";
+import axios from 'axios';
+
+const Chat = () => {
+  
+  const [messages, setMessages] = useState([]);
+  const [clearInput, setClearInput] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const firstmsg = { sender: "bot", text: "hello how can i help you?" };
+
+  const guidedQuestions = {
+    sender: "bot",
+    text: "How can I help you today?",
+    options: ["Question about services", "Support issue", "Billing query"]
+  };
+
+  const handleSend = (message) => {
+    const userMessage = { sender: "user", text: message };
+    const botMessage = {
+      sender: "bot",
+      text: "Bot message comes here"
+    };
+    
+    setMessages((prevMessages) => [...prevMessages, userMessage, guidedQuestions]);
+  };
+
+
+
+
+  const handleClear = () => {
+    setMessages([]);
+    setClearInput(true);
+    setTimeout(() => setClearInput(false), 0);
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  return (
+    <Box display="flex" height="100vh">
+      <Box
+        position={{ base: "absolute", md: "relative" }}
+        transform={{ base: isSidebarOpen ? "translateX(0)" : "translateX(-100%)", md: "none" }}
+        transition="transform 0.3s ease-in-out"
+        width={{ base: "75%", md: "20%" }}
+        bg="blue.50"
+        p={4}
+        height="100vh"
+        zIndex="10"
+      >
+        <div className="d-grid col-9 mx-auto">
+          <img src={logo} alt="Logo" />
+        </div>
+        <br />
+        <div className="d-grid gap-2 col-8 col-lg-6 mx-auto">
+          <button className="btn btn-danger border-0 shadow-none" onClick={handleClear}>
+            New Chat
+          </button>
+        </div>
+        <ChatHistory messages={messages} />
+        <IconButton
+          aria-label="Close Sidebar"
+          background={"transparent"}
+          icon={<FaTimes />}
+          onClick={toggleSidebar}
+          display={{ base: "block", md: "none" }}
+          position="absolute"
+          top="10px"
+          right="0px"
+          _hover={{ background: 'transparent' }}
+          _active={{ background: 'transparent' }}
+          boxSize="40px" // Adjust the size as needed
+          fontSize="24px" // Adjust the icon size as needed
+        />
+      </Box>
+      <Box flex="1" p={4} width={{ base: "100%", md: "80%" }}>
+        <IconButton
+          aria-label="Open Sidebar"
+          background={"transparent"}
+          icon={<FaBars />}
+          onClick={toggleSidebar}
+          display={{ base: "block", md: "none" }}
+          position="absolute"
+          top="22px"
+          left="10px"
+          _hover={{ background: 'transparent' }}
+          _active={{ background: 'transparent' }}
+          boxSize="40px" // Adjust the size as needed
+          fontSize="24px" // Adjust the icon size as needed
+          
+        />
+        <VStack spacing={4} height="100%">
+          <Header />
+          <Box flex="1" width="100%" overflowY="auto">
+            <Box m={2} display="flex" justifyContent={firstmsg.sender === "user" ? "flex-end" : "flex-start"}>
+              <Box
+                bg={"red.200"}
+                color={"red.900"}
+                px={4}
+                borderRadius="md"
+                maxWidth="60%"
+              >
+                <Text pt={2}>{firstmsg.text}</Text>
+              </Box>
+            </Box>
+            {messages && messages.map((msg, index) => (
+              <Chatbot key={index} message={msg} onSend={handleSend} />
+            ))}
+          </Box>
+          <InputComponent onSend={handleSend} clearInput={clearInput} />
+        </VStack>
+      </Box>
+    </Box>
+  );
+};
+
+export default Chat;
+
+
+
 // import React, { useState } from "react";
-// import { Box, VStack, IconButton,Text } from "@chakra-ui/react";
+// import { Box, VStack, IconButton, Text } from "@chakra-ui/react";
 // import { FaBars, FaTimes } from "react-icons/fa";
 // import Chatbot from "../components/Chatbot";
 // import ChatHistory from "../components/ChatHistory";
@@ -15,7 +144,7 @@
 //   const [clearInput, setClearInput] = useState(false);
 //   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-//   const firstmsg = { sender: "bot", text: "hello how can i help you?" };
+//   const firstmsg = { sender: "bot", text: "Hello, how can I help you?" };
 
 //   const guidedQuestions = {
 //     sender: "bot",
@@ -23,30 +152,18 @@
 //     options: ["Question about services", "Support issue", "Billing query"]
 //   };
 
-//   // const handleSend = (message) => {
-//   //   const userMessage = { sender: "user", text: message };
-//   //   const botMessage = {
-//   //     sender: "bot",
-//   //     text: "Bot message comes here"
-//   //   };
-    
-//   //   setMessages((prevMessages) => [...prevMessages, userMessage, guidedQuestions]);
-//   // };
-
-
-
 //   const handleSend = async (message) => {
 //     const userMessage = { sender: "user", text: message };
 //     setMessages((prevMessages) => [...prevMessages, userMessage]);
-  
+
 //     try {
-//       const apiKey = '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'; // Replace with your OpenAI API key
-//       const endpoint = 'https://api.openai.com/v1/chat/completions';
-  
+//       const apiKey = "" ; // Replace with your OpenAI API key
+//       // const endpoint = 'https://api.openai.com/v1/chat/completions';
+
 //       const response = await axios.post(
 //         endpoint,
 //         {
-//           model: 'gpt-4', // or 'gpt-3.5-turbo'
+//           model: 'gpt-3.5-turbo', // or 'gpt-3.5-turbo'
 //           messages: [
 //             { role: 'system', content: 'You are a helpful assistant.' },
 //             { role: 'user', content: message }
@@ -59,15 +176,18 @@
 //           },
 //         }
 //       );
-  
+
+//       console.log(response); // Log the response for debugging
+
 //       const botMessage = {
 //         sender: "bot",
 //         text: response.data.choices[0].message.content,
 //       };
-  
+
 //       setMessages((prevMessages) => [...prevMessages, botMessage]);
 //     } catch (error) {
-//       console.error('Error:', error);
+//       // Log the error details
+//       console.error('Error:', error.response ? error.response.data : error.message);
 //       const errorMessage = {
 //         sender: "bot",
 //         text: "Sorry, something went wrong. Please try again later.",
@@ -99,7 +219,8 @@
 //         zIndex="10"
 //       >
 //         <div className="d-grid col-9 mx-auto">
-//           <img src={logo} alt="Logo" />
+//           {/* <img src={logo} alt="Logo" /> */}
+//           <h1 className="text-center text-info">Apna Bot</h1>
 //         </div>
 //         <br />
 //         <div className="d-grid gap-2 col-8 col-lg-6 mx-auto">
@@ -119,8 +240,8 @@
 //           right="0px"
 //           _hover={{ background: 'transparent' }}
 //           _active={{ background: 'transparent' }}
-//           boxSize="40px" // Adjust the size as needed
-//           fontSize="24px" // Adjust the icon size as needed
+//           boxSize="40px"
+//           fontSize="24px"
 //         />
 //       </Box>
 //       <Box flex="1" p={4} width={{ base: "100%", md: "80%" }}>
@@ -135,9 +256,8 @@
 //           left="10px"
 //           _hover={{ background: 'transparent' }}
 //           _active={{ background: 'transparent' }}
-//           boxSize="40px" // Adjust the size as needed
-//           fontSize="24px" // Adjust the icon size as needed
-          
+//           boxSize="40px"
+//           fontSize="24px"
 //         />
 //         <VStack spacing={4} height="100%">
 //           <Header />
@@ -165,163 +285,3 @@
 // };
 
 // export default Chat;
-
-
-
-import React, { useState } from "react";
-import { Box, VStack, IconButton, Text } from "@chakra-ui/react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import Chatbot from "../components/Chatbot";
-import ChatHistory from "../components/ChatHistory";
-import InputComponent from "../components/InputComponent";
-import logo from "../Images/eslogo.png";
-import Header from "../components/Header";
-import axios from 'axios';
-
-const Chat = () => {
-  
-  const [messages, setMessages] = useState([]);
-  const [clearInput, setClearInput] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const firstmsg = { sender: "bot", text: "Hello, how can I help you?" };
-
-  const guidedQuestions = {
-    sender: "bot",
-    text: "How can I help you today?",
-    options: ["Question about services", "Support issue", "Billing query"]
-  };
-
-  const handleSend = async (message) => {
-    const userMessage = { sender: "user", text: message };
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
-
-    try {
-      const apiKey = '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'; // Replace with your OpenAI API key
-      const endpoint = 'https://api.openai.com/v1/chat/completions';
-
-      const response = await axios.post(
-        endpoint,
-        {
-          model: 'gpt-3.5-turbo', // or 'gpt-3.5-turbo'
-          messages: [
-            { role: 'system', content: 'You are a helpful assistant.' },
-            { role: 'user', content: message }
-          ],
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-
-      console.log(response); // Log the response for debugging
-
-      const botMessage = {
-        sender: "bot",
-        text: response.data.choices[0].message.content,
-      };
-
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-    } catch (error) {
-      // Log the error details
-      console.error('Error:', error.response ? error.response.data : error.message);
-      const errorMessage = {
-        sender: "bot",
-        text: "Sorry, something went wrong. Please try again later.",
-      };
-      setMessages((prevMessages) => [...prevMessages, errorMessage]);
-    }
-  };
-
-  const handleClear = () => {
-    setMessages([]);
-    setClearInput(true);
-    setTimeout(() => setClearInput(false), 0);
-  };
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  return (
-    <Box display="flex" height="100vh">
-      <Box
-        position={{ base: "absolute", md: "relative" }}
-        transform={{ base: isSidebarOpen ? "translateX(0)" : "translateX(-100%)", md: "none" }}
-        transition="transform 0.3s ease-in-out"
-        width={{ base: "75%", md: "20%" }}
-        bg="blue.50"
-        p={4}
-        height="100vh"
-        zIndex="10"
-      >
-        <div className="d-grid col-9 mx-auto">
-          {/* <img src={logo} alt="Logo" /> */}
-          <h1 className="text-center text-info">Apna Bot</h1>
-        </div>
-        <br />
-        <div className="d-grid gap-2 col-8 col-lg-6 mx-auto">
-          <button className="btn btn-danger border-0 shadow-none" onClick={handleClear}>
-            New Chat
-          </button>
-        </div>
-        <ChatHistory messages={messages} />
-        <IconButton
-          aria-label="Close Sidebar"
-          background={"transparent"}
-          icon={<FaTimes />}
-          onClick={toggleSidebar}
-          display={{ base: "block", md: "none" }}
-          position="absolute"
-          top="10px"
-          right="0px"
-          _hover={{ background: 'transparent' }}
-          _active={{ background: 'transparent' }}
-          boxSize="40px"
-          fontSize="24px"
-        />
-      </Box>
-      <Box flex="1" p={4} width={{ base: "100%", md: "80%" }}>
-        <IconButton
-          aria-label="Open Sidebar"
-          background={"transparent"}
-          icon={<FaBars />}
-          onClick={toggleSidebar}
-          display={{ base: "block", md: "none" }}
-          position="absolute"
-          top="22px"
-          left="10px"
-          _hover={{ background: 'transparent' }}
-          _active={{ background: 'transparent' }}
-          boxSize="40px"
-          fontSize="24px"
-        />
-        <VStack spacing={4} height="100%">
-          <Header />
-          <Box flex="1" width="100%" overflowY="auto">
-            <Box m={2} display="flex" justifyContent={firstmsg.sender === "user" ? "flex-end" : "flex-start"}>
-              <Box
-                bg={"red.200"}
-                color={"red.900"}
-                px={4}
-                borderRadius="md"
-                maxWidth="60%"
-              >
-                <Text pt={2}>{firstmsg.text}</Text>
-              </Box>
-            </Box>
-            {messages && messages.map((msg, index) => (
-              <Chatbot key={index} message={msg} onSend={handleSend} />
-            ))}
-          </Box>
-          <InputComponent onSend={handleSend} clearInput={clearInput} />
-        </VStack>
-      </Box>
-    </Box>
-  );
-};
-
-export default Chat;
