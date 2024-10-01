@@ -21,7 +21,7 @@ const Login = () => {
       <div className="row h-100 no-gutters">
         <div className="col-md-6 d-flex flex-column align-items-center justify-content-center bg-teal text-white">
          <div className="col-sm-12 d-flex flex-row-reverse">
-          <img
+          {/* <img
             src={escortslogo}
             alt="Kubota Logo"
             className="mb-4  logo escorts"
@@ -30,7 +30,7 @@ const Login = () => {
               position: 'absolute',
               top: '20px', 
             }}
-          />
+          /> */}
           </div>
           <img
             src={bot}
@@ -42,7 +42,7 @@ const Login = () => {
         
         <div className="col-md-6 d-flex flex-column align-items-center justify-content-center bg-white p-4">
         <div className="col-sm-12 d-flex flex-row mb-3">
-          <img
+          {/* <img
             src={kubotalogo}
             alt="Kubota Logo"
             className="mb-4 kubotalogo logo"
@@ -51,7 +51,7 @@ const Login = () => {
               position: 'absolute',
               top: '20px', 
             }}
-          />
+          /> */}
           </div>
           <div className="w-100" style={{ maxWidth: '400px' }}>
             <h1 className="text-center mb-2 text-teal font-weight-bold name">Serv-Genie</h1>

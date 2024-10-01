@@ -67,8 +67,9 @@ const Sidebar = ({ isOpen, onClose }) => {
       <CSidebarHeader className="border-bottom">
         <CSidebarBrand to="/">
           <Flex alignItems="center">
-            <img src={escorts} alt="Logo" style={{ height: '50px', width: 'auto' }} />
-            <img src={kubota} alt="Logo" style={{ height: '50px', width: 'auto', marginLeft: '10px' }} />
+            {/* <img src={escorts} alt="Logo" style={{ height: '50px', width: 'auto' }} />
+            <img src={kubota} alt="Logo" style={{ height: '50px', width: 'auto', marginLeft: '10px' }} /> */}
+            <h1 className='text-center'>Apna Bot</h1>
           </Flex>
         </CSidebarBrand>
       </CSidebarHeader>

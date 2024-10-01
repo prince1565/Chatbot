@@ -14,6 +14,8 @@ const ChatHistory = ({ messages }) => {
   }, []);
 
   useEffect(() => {
+
+    
     // Check if there are messages and the first message is not already in the history
     if (messages.length > 0) {
       const firstmsg = messages[0].text;

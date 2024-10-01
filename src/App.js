@@ -39,8 +39,9 @@ const AppContent = () => {
           {showBreadcrumbs && <Breadcrumbs />}
           <Routes>
             <Route path="/admin" element={<Login />} />
+            <Route path="/chatbot" element={<Userlogin />} />
             <Route path="/login" element={<Userlogin />} />
-            <Route path="/chat" element={<Chat />} />
+            <Route path="/chat" element={<Chat/>} />
             <Route
               path="/"
               element={
